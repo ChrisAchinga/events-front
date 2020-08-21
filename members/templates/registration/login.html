@@ -1,16 +1,36 @@
+
+
 {% extends 'base.html' %}
+
 {% block title %}Login{% endblock %}
 
 {% block content %}
 
-<h1>Login</h1>
+<header class="masthead" style="background-image: url('img/post-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>Login</h1>
+            <h2 class="subheading">Login To Read More</h2>
+            <span class="meta">Posted on {{ post.post_date }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
 
-<div class="form-group">
-    <form action="" method="post">
-        {% csrf_token %}
-        {{form.as_p}}
-        <button class="btn btn-primary">Login</button>
-    </form>
+<div class="container">
+    <h1>Login</h1>
+
+    <div class="form-group">
+        <form action="" method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button class="btn btn-primary">Login</button>
+        </form>
+    </div>
 </div>
 
 {% endblock %}
