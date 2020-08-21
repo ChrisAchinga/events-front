@@ -13,6 +13,12 @@ class homeView(ListView):
     # ordering = ['-id']
     ordering = ['-post_date']
 
+def HomePage(request):
+    posts = Post.objects.all()
+    category = Category.objects.all()
+    context = {'posts':posts, 'category':category}
+    return render(request, 'index.html', context)
+
 class detailView(DetailView):
     model = Post
     template_name = 'article_details.html'
