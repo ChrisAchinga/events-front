@@ -1,1 +1,35 @@
-Article, Categories $ News
+Article, Categories & News
+
+
+<h1>Articles</h1>
+{% for article in article %}
+<ul>
+    <li>
+        <h1>{{article.title}}</h1>
+        <p> {{article.description}} </p>
+    </li>
+</ul>
+{% endfor %}
+<hr>
+
+<h1>News</h1>
+{% for news in news %}
+<ul>
+    <li>
+        <h1> {{news.title}} </h1>
+        <p> {{news.description}} </p>
+    </li>
+</ul>
+{% endfor %}
+<hr>
+
+<h1>Category</h1>
+
+{% for category in category %}
+<ul>
+    <li>
+        <h1> {{category.name}} </h1>
+        <p> {{category.description}} </p>
+    </li>
+</ul>
+{% endfor %}

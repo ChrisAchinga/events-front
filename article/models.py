@@ -39,9 +39,24 @@ class Article(models.Model):
     description = models.TextField()
     subheading = models.CharField('Sub Heading', max_length=100, null=False, blank=False)
     body = models.TextField('Article Body', null=False, blank=False)
-    subheading1 = models.CharField('Sub Heading (optional)', max_length=100, null=False, blank=False)
-    body1 = models.TextField('Article Body (optional)', null=False, blank=False)
+    subheading1 = models.CharField('Sub Heading (optional)', max_length=100, null=True, blank=True)
+    body1 = models.TextField('Article Body (optional)', null=True, blank=True)
     date = models.DateField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'Articles'
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+       return self.title + ' ' + 'by' + ' ' + str(self.author)
+
+    @property
+    def imageURL(self):
+        try:
+            url = self.cover_image.url
+        except:
+            url = ''
+        return url
 
 class News(models.Model):
     title = models.CharField('News Title', max_length=100, null=False)
@@ -52,6 +67,21 @@ class News(models.Model):
     body = models.TextField('News Body')
     date = models.DateField('Date')
 
+    class Meta:
+        verbose_name = 'News'
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+       return self.title + ' ' + 'by' + ' ' + str(self.author)
+
+    @property
+    def imageURL(self):
+        try:
+            url = self.image.url
+        except:
+            url = ''
+        return url
+
 class ImageGallery(models.Model):
     image = models.ImageField(upload_to='uploads/')
     name = models.CharField('Image Name', max_length=20)
@@ -59,3 +89,14 @@ class ImageGallery(models.Model):
     description = models.TextField('Description', null=False)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True)
 
+    class Meta:
+        verbose_name = 'Image Gallery'
+        verbose_name_plural = verbose_name
+
+    @property
+    def imageURL(self):
+        try:
+            url = self.image.url
+        except:
+            url = ''
+        return url

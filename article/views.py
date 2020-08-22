@@ -8,7 +8,8 @@ def Landing(request):
     article = Article.objects.all()
     category = Category.objects.all()
     news = News.objects.all()
-    return render(request, 'article/index.html')
+    context = {'article':article, 'category':category, 'news':news}
+    return render(request, 'article/index.html', context)
 
 
 # Class Based Views
