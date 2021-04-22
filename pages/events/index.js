@@ -1,6 +1,11 @@
+import Layout from '../../components/Layout'
 
-const EventsPage = () => {
-  return <div>events</div>
+const AllEvents = () => {
+    return (
+        <Layout title='All events'>
+            <h1>All events</h1>
+        </Layout>
+    )
 }
 
-export default EventsPage
+export default AllEvents
