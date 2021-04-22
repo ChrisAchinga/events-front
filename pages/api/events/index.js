@@ -5,6 +5,6 @@ export default (req, res) => {
     res.status(200).json(events)
   } else {
     res.setHeader('Allow', ['GET'])
-    res.status(405).json({ message: `method ${req.method} not allowed` })
+    res.status(405).json({ message: `Method ${req.method} is not allowed` })
   }
 }

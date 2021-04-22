@@ -1,11 +1,21 @@
 import Layout from '@/components/Layout'
+import { API_URL } from '@/config/index'
 
-const Home = () => {
+export default function Home() {
   return (
     <Layout>
-      <h1>Home</h1>
+      <h1>Upcoming Events</h1>
     </Layout>
   )
 }
 
-export default Home
+export async function getServerSideProps() {
+  const res = await fetch(`${API_URL}/api/events`)
+  const events = await res.json()
+
+  console.log(events)
+
+  return {
+    props: { events },
+  }
+}
