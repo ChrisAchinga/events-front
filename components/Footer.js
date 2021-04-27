@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className={styles.footer}>
       <p>Copyright &copy; ChrisDevCode 2021</p>
-      <Link href='/about'>About this platfoem</Link>
+      <Link href='/about'>About this platform</Link>
     </footer>
   )
 }
