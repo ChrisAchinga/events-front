@@ -1,12 +1,17 @@
-import { useState, UseEffect } from 'react'
+import { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
-import { FaTimes } from 'react-icons'
+import { FaTimes } from 'react-icons/fa'
 import styles from '@/styles/Modal.module.css'
 
 const Modal = ({ show, onClose, children, title }) => {
   const [isBrowser, setIsBrowser] = useState(false)
 
-  UseEffect(() => setIsBrowser(true))
+  useEffect(() => setIsBrowser(true))
+
+  const handleClose = (e) => {
+    e.preventDefault()
+    onClose()
+  }
 
   const modalContent = show ? (
     <div className={styles.overlay}>
