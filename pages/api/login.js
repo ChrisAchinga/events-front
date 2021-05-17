@@ -3,7 +3,7 @@ import { API_URL } from '@/config/index'
 export default async (req, res) => {
   if (req.method === 'POST') {
     const { identifier, password } = req.body
-    // console.log(req.body)
+
     const strapiRes = await fetch(`${API_URL}/auth/local`, {
       method: 'POST',
       headers: {
@@ -15,10 +15,11 @@ export default async (req, res) => {
       }),
     })
 
-    const data = await strapiRes.json({})
+    const data = await strapiRes.json()
 
     if (strapiRes.ok) {
-      res.status(200).json({ user: data })
+      // @todo - Set cookie
+      res.status(200).json({ user: data.user })
     } else {
       res
         .status(data.statusCode)
@@ -26,6 +27,6 @@ export default async (req, res) => {
     }
   } else {
     res.setHeader('Allow', ['POST'])
-    res.status(405).json({ message: `method ${req.method} not allowed` })
+    res.status(405).json({ message: `Method ${req.method} not allowed` })
   }
 }
