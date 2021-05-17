@@ -8,24 +8,24 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
   const [error, setError] = useState(null)
 
-  // register user
+  // Register user
   const register = async (user) => {
     console.log(user)
   }
 
-  // login user
+  // Login user
   const login = async ({ email: identifier, password }) => {
     console.log({ identifier, password })
   }
 
-  // logout user
-  const logout = async (user) => {
-    console.log('logout')
+  // Logout user
+  const logout = async () => {
+    console.log('Logout')
   }
 
-  // check if user logged in
+  // Check if user is logged in
   const checkUserLoggedIn = async (user) => {
-    console.log('check')
+    console.log('Check')
   }
 
   return (
@@ -34,6 +34,5 @@ export const AuthProvider = ({ children }) => {
     </AuthContext.Provider>
   )
 }
-
 
 export default AuthContext
